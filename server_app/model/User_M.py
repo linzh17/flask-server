@@ -11,7 +11,7 @@ class User(db.Model):
     avatarUrl=db.Column(db.String)
 
     def __repr__(self):
-        return '<User %r>' % self.nickName
+        return '<User %r>' % self.email
 
     def to_json(self):
         userJson={
@@ -38,3 +38,6 @@ class LocalUser(db.Model):
             "password":self.password,
         }
         return localuserJson
+
+    def __repr__(self):
+        return '<LocalUser %r>' % self.email    
