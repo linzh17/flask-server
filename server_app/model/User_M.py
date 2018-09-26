@@ -22,3 +22,19 @@ class User(db.Model):
             "avatarUrl":self.avatarUrl,
         }
         return userJson    
+
+class LocalUser(db.Model):
+    __tablename__ = 'localusers'
+    id=db.Column(db.Integer,primary_key=True)
+    email=db.Column(db.String(64),unique=True)
+    password=db.Column(db.String(64))
+
+    Userid=db.Column(db.Integer,db.ForeignKey('users.Userid'))
+
+
+    def to_json(self):
+        localuserJson={
+            "email":self.email,
+            "password":self.password,
+        }
+        return localuserJson
